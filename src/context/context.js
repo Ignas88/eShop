@@ -7,6 +7,7 @@ const Context = React.createContext();
 export class Provider extends Component {
   state = {
     items: [],
+    cartItems: [],
     dispatch: action => this.setState(state => reducer(state, action))
   };
 

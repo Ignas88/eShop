@@ -1,19 +1,19 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'DELETE_ITEM':
-      return {
-        ...state,
-        contacts: state.items.filter(item => item.id !== action.payload)
-      };
     case 'ADD_ITEM':
       return {
         ...state,
-        contacts: [action.payload, ...state.items]
+        cartItems: [...state.cartItems, action.payload]
+      };
+    case 'DELETE_ITEM':
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(item => item.id !== action.payload)
       };
     case 'UPDATE_ITEM':
       return {
         ...state,
-        contacts: state.items.map(item => item.id === action.payload.id ? (item = action.payload) : item)
+        cartItems: state.cartItems.map(item => item.id === action.payload.id ? (item = action.payload) : item )
       };
     default:
       return state;
