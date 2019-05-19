@@ -1,15 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { Consumer } from "../../context/context";
 import CartItem from './CartItem';
-import ShopItem from "../ShopItem/ShopItem";
-
-const styles = {
-  list: {
-    padding: 24
-  }
-};
 
 class CartItemList extends Component {
 
@@ -18,7 +9,6 @@ class CartItemList extends Component {
   };
 
   render() {
-    const { classes } = this.props;
 
     return (
       <Consumer>
@@ -40,7 +30,7 @@ class CartItemList extends Component {
           }
 
           return (
-            <div className={classes.list}>
+            <div>
               {content}
             </div>
           )
@@ -50,8 +40,4 @@ class CartItemList extends Component {
   }
 }
 
-ShopItem.propTypes = {
-  classes: PropTypes.object
-};
-
-export default withStyles(styles)(CartItemList);
+export default CartItemList;

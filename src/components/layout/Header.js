@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
-import ShopItem from "../ShopItem/ShopItem";
 
 const styles = {
   header: {
@@ -31,7 +30,7 @@ const Header = props => {
 
         return (
           <React.Fragment>
-            <AppBar position="static">
+            <AppBar>
               <Toolbar className={classes.header}>
                 <Button component={Link} style={{color: 'white'}} to="/">Items</Button>
                 <Button component={Link} style={{color: 'white'}} to="/cart">
@@ -48,8 +47,8 @@ const Header = props => {
   );
 };
 
-ShopItem.propTypes = {
-  classes: PropTypes.object
+Header.propTypes = {
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Header);

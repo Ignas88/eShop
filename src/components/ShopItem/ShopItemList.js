@@ -66,8 +66,8 @@ class ShopItemList extends Component {
   }
 }
 
-ShopItem.propTypes = {
-  classes: PropTypes.object
+ShopItemList.propTypes = {
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ShopItemList);

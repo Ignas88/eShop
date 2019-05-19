@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { Consumer } from "../context/context";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,6 +9,15 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CartItemList from "../components/CartItem/CartItemList";
 import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
+
+const styles = {
+  page: {
+    marginTop: 74,
+    height: '90vh',
+    overflowY: 'scroll',
+  }
+};
 
 class CartPage extends Component {
   state = {
@@ -23,13 +33,15 @@ class CartPage extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <Consumer>
         {value => {
           const {cartItems} = value;
 
           return (
-            <div>
+            <div className={classes.page}>
               <h1>
                 Your Albums
                 {cartItems.length > 0 &&
@@ -68,8 +80,11 @@ class CartPage extends Component {
         }}
       </Consumer>
     );
-
   }
 }
 
-export default CartPage;
+CartPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(CartPage);

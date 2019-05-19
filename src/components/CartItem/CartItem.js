@@ -18,10 +18,11 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-  content: {
+  textContent: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '85%'
   },
   image: {
     height: 50,
@@ -32,15 +33,20 @@ const styles = {
   font: {
     fontWeight: 500
   },
-  contentRight: {
-    width: '30%',
+  content: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    position: 'relative'
   },
   textField: {
     width: '30%',
+  },
+  chip: {
+    position: 'absolute',
+    top: -10,
+    right: -10
   }
 };
 
@@ -66,19 +72,21 @@ class CartItem extends Component {
             <React.Fragment>
               <Grid item xs={12}>
                 <Card className={classes.card}>
-                  <CardMedia image={item.image} className={classes.image}/>
-                  <div className={classes.content}>
-                    <Typography variant="button" className={classes.font} gutterBottom>
-                      {item.name}
-                    </Typography>
-                    <Typography variant="caption">
-                      {item.artist}
-                    </Typography>
-                  </div>
-                  <div className={classes.contentRight}>
+                  <Grid item xs={12} className={classes.content}>
+                    <CardMedia image={item.image} className={classes.image}/>
+                    <div className={classes.textContent}>
+                      <Typography className={classes.font} gutterBottom>
+                        {item.name}
+                      </Typography>
+                      <Typography>
+                        {item.artist}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} className={classes.content}>
                     <TextField
                       id="outlined-number"
-                      label="Number"
+                      label="Qty"
                       value={item.qty}
                       onChange={this.changeQty.bind(this, dispatch, item)}
                       type="number"
@@ -103,7 +111,7 @@ class CartItem extends Component {
                       clickable
                       onClick={click}
                     />
-                  </div>
+                  </Grid>
                 </Card>
               </Grid>
             </React.Fragment>
